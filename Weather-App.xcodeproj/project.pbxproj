@@ -24,6 +24,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CDA97A582F6DE012000C71C7 /* Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
+		CDF2A0012F6F1000000C71C7 /* Secrets.xcconfig.example */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig.example; sourceTree = "<group>"; };
 		CDEC134E2F6C71CA00177447 /* Weather-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDEC135D2F6C71CB00177447 /* Weather-AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Weather-AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDEC13672F6C71CB00177447 /* Weather-AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Weather-AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,9 +74,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CDA97A5B2F6DE012000C71C7 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				CDA97A582F6DE012000C71C7 /* Base.xcconfig */,
+				CDF2A0012F6F1000000C71C7 /* Secrets.xcconfig.example */,
+			);
+			path = Configurations;
+			sourceTree = "<group>";
+		};
 		CDEC13452F6C71CA00177447 = {
 			isa = PBXGroup;
 			children = (
+				CDA97A5B2F6DE012000C71C7 /* Configurations */,
 				CDEC13502F6C71CA00177447 /* Weather-App */,
 				CDEC13602F6C71CB00177447 /* Weather-AppTests */,
 				CDEC136A2F6C71CB00177447 /* Weather-AppUITests */,
@@ -390,6 +402,7 @@
 		};
 		CDEC13722F6C71CB00177447 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CDA97A582F6DE012000C71C7 /* Base.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -397,6 +410,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_WEATHERSTACK_API_KEY = "$(WEATHERSTACK_API_KEY)";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -422,6 +436,7 @@
 		};
 		CDEC13732F6C71CB00177447 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CDA97A582F6DE012000C71C7 /* Base.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -429,6 +444,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_WEATHERSTACK_API_KEY = "$(WEATHERSTACK_API_KEY)";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

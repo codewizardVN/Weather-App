@@ -7,7 +7,7 @@ struct FetchWeatherUseCase {
         self.repository = repository
     }
 
-    func execute(for city: String) async throws -> Weather {
+    func fetchCurrentWeather(for city: String) async throws -> Weather {
         try await repository.fetchCurrentWeather(for: city)
     }
 }

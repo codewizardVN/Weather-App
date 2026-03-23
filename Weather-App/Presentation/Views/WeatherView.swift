@@ -1,23 +1,36 @@
 import SwiftUI
 
 struct WeatherView: View {
-    @StateObject private var viewModel = WeatherViewModel(
-        fetchWeatherUseCase: FetchWeatherUseCase(
-            repository: WeatherRepository(
-                remoteDataSource: WeatherRemoteDataSource()
-            )
-        )
-    )
-
+    @StateObject private var viewModel:WeatherViewModel
+    @State private var city = ""
+    
+    init(viewModel: WeatherViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
+    
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 16) {
                 Text("Weather App")
                     .font(.largeTitle.bold())
-
-                Text("Architecture skeleton is ready. You can now replace each placeholder with your own implementation.")
-                    .foregroundStyle(.secondary)
-
+                
+                TextField("Enter city", text: $city)
+                    .textFieldStyle(.roundedBorder)
+                    .submitLabel(.search)
+                    .onSubmit {
+                        Task {
+                            await viewModel.loadWeather(for: city)
+                        }
+                    }
+                
+                Button("Load Weather") {
+                    Task {
+                        await viewModel.loadWeather(for: city)
+                    }
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(viewModel.isLoading || city.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                
                 if viewModel.isLoading {
                     ProgressView("Loading...")
                 } else if let weather = viewModel.weather {
@@ -32,17 +45,10 @@ struct WeatherView: View {
                     Text(errorMessage)
                         .foregroundStyle(.red)
                 } else {
-                    Text("No weather loaded yet.")
+                    Text("Enter a city and load weather.")
                         .foregroundStyle(.secondary)
                 }
-
-                Button("Load Sample Weather") {
-                    Task {
-                        await viewModel.loadWeather()
-                    }
-                }
-                .buttonStyle(.borderedProminent)
-
+                
                 Spacer()
             }
             .padding()

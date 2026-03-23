@@ -47,3 +47,10 @@ Weather-App/
 - The app still builds with a small placeholder flow so you can replace each layer step by step.
 - Empty folders keep a small placeholder file so the structure stays visible in Git.
 - In this Xcode setup, identical `.gitkeep` filenames can cause duplicate bundle resource outputs, so the placeholder filenames are unique per folder.
+
+## Secrets setup
+
+1. Copy `Configurations/Secrets.xcconfig.example` to `Configurations/Secrets.xcconfig`.
+2. Fill in `WEATHERSTACK_API_KEY`.
+3. The generated app `Info.plist` will expose `WEATHERSTACK_API_KEY` to the app at runtime.
+4. Read it from [`AppConfig.swift`](/Users/kobe/Projects/Weather-App/Weather-App/Core/Utils/AppConfig.swift).
